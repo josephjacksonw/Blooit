@@ -13,12 +13,12 @@ function Comment() {
 }
 
 Comment.propTypes = {
-  author: string,
-  creationDate: date,
-  text: string,
-  upvotes: number,
-  downvote: number,
-  replies: [Comment]
+  author: PropTypes.string,
+  creationDate: PropTypes.string,
+  text: PropTypes.string,
+  upvotes: PropTypes.number,
+  downvotes: PropTypes.number,
+  replies: PropTypes.array
 }
 
 export default Comment;
