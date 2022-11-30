@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import PostDetail from './PostDetail';
 
 //TODO:
-// edit functionality
+// edit functionality OK
 // upvote/downvote
 // sort list by votes
 
@@ -69,7 +69,7 @@ class BlooitControl extends React.Component {
       title: title,
       author: author,
       text: text,
-      upvotes: upvotes + 1,
+      upvotes: parseInt(upvotes) + 1,
       downvotes: downvotes,
       creationDate: creationDate,
     }

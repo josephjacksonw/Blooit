@@ -3,6 +3,19 @@ import PropTypes from "prop-types";
 
 
 function Post(props){
+
+  function handleUpvote(event){
+    event.preventDefault();
+    props.onUpvote({
+      title: props.title,
+      author: props.author,
+      text: props.text,
+      creationDate: props.creationDate,
+      upvotes: props.upvotes + 1,
+      downvotes: props.downvotes,
+      id: props.id
+    });
+  }
   
   return(
     <div className="post"> {/*TODO: why does it allow us to reach the function when we parseint? The method doesn't work, but it is reached, otherwise it isn't reached at all.*/}
@@ -26,7 +39,7 @@ function Post(props){
             
           </div> {/*downvotes*/}
         </div>{/*votes*/}
-        <div className="post--title"  onClick={() => props.whenClicked(props.id)}>
+        <div className="post--title"  onClick={handleUpvote}>
           <h1>{props.title}</h1>
           <h3>{props.author} - {props.creationDate}</h3>
           
