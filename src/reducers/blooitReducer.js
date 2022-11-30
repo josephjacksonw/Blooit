@@ -1,5 +1,10 @@
-const reducer = (state = {}, action) => {
-  return state;
-}
+import formReducer from './formReducer';
+import postReducer from './postReducer';
+import {combineReducers} from 'redux';
 
-export default reducer;
+const rootReducer = combineReducers({
+  formVisibleOnPage: formReducer,
+  mainPostList: postReducer
+});
+
+export default rootReducer;

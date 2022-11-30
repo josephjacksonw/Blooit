@@ -5,9 +5,10 @@ function Header() {
   return (
     <div className="header">
       <img src={blooit} alt="you bloo it" className="header--image" />
-      <h1 className="header--title">Blooit</h1> 
+      <h1 className="header--title">blooit</h1> 
       
-      <h2 className="header--subtitle">The hairy smelly armpit of the Internet.</h2>
+      <h2 className="header--subtitle">You wanted reddit? Well, you blooit.</h2>
+      {/* alternate tag line: "you wanted reddit? well, you blooit." */}
     </div>
   )
 }
