@@ -1,13 +1,39 @@
 import React from "react";
 import Post from "./Post";
 import postData from "./../postData.js";
+import PropTypes from "prop-types";
+import {connect} from 'react-redux';
 
-function PostList(){
+function PostList(props){
 
   return(
     <React.Fragment>
     <div className="post-list">
+       {Object.values(props.postList).map((post) =>
         <Post
+          whenClicked={props.onPostSelect}
+          author={post.author}
+          creationDate={post.creationDate}
+          title={post.title}
+          text={post.text}
+          upvotes={post.upvotes}
+          downvotes={post.downvotes}
+          id={post.id}
+          key={post.id}
+          onUpvote={props.onUpvote}/>
+       )}
+    </div>
+    </React.Fragment>
+  );
+}
+
+PostList.propTypes = {
+  postList: PropTypes.object,
+}
+
+export default PostList;
+
+ {/* <Post
           author="Skylan"
           creationDate={new Date().toUTCString()}
           title="Hello World"
@@ -33,11 +59,4 @@ function PostList(){
           upvotes= {5}
           downvotes= {8}
           id="3"
-        />
-
-    </div>
-    </React.Fragment>
-  )
-}
-
-export default PostList;
+        /> */}

@@ -10,7 +10,7 @@ function newPost(props){
     props.onNewPost({
       title: event.target.title.value,
       author: event.target.author.value,
-      creationDate: new Date().toUTCString,
+      creationDate: null, //we assign the creationDate with the reducer
       text: event.target.text.value,
       upvotes: 0,
       downvotes: 0,
@@ -22,14 +22,16 @@ function newPost(props){
 
   return (
     <React.Fragment>
-      <ReusableForm formSubmissionHandler={handleNewPost}/>
+      <ReusableForm formReturnHandler={props.onReturnButton} formSubmissionHandler={handleNewPost}/>
+      
     </React.Fragment>
     //they call the reusable form here
   );
 }
 
 newPost.propTypes = {
-  onNewPost: PropTypes.func
+  onNewPost: PropTypes.func,
+  onReturnButton: PropTypes.func
 };
 
 export default newPost;

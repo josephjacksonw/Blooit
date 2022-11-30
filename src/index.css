@@ -100,7 +100,7 @@ svg{
   /* background-color: red; */
 }
 
-.post--controls > button{
+.post--controls > button, form > button{
   background-color: #3f8afa;
   box-shadow: 3px -3px #070063;
   margin-top: 1rem;
@@ -121,4 +121,17 @@ svg{
   font-size: larger;
   height: fit-content;
   width: 10%;
+}
+
+.post-list{
+  width: 80vw;
+  min-height: 10px;
+}
+
+.form{
+  width: 80vw;
+}
+
+.hidden{
+  display:none;
 }

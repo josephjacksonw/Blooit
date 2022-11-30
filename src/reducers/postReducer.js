@@ -1,5 +1,5 @@
 const reducer = (state = {}, action) => {
-  const { title, author, text, id } = action;
+  const { title, author, text, id, upvotes, downvotes, creationDate } = action;
   switch (action.type) {
   case 'ADD_POST':
     return Object.assign({}, state, {
@@ -7,7 +7,10 @@ const reducer = (state = {}, action) => {
         title: title,
         author: author,
         text: text,
-        id: id
+        id: id,
+        upvotes: upvotes,
+        downvotes: downvotes,
+        creationDate: new Date().toUTCString() //if you want a dateTime on creation, do it here
       }
     });
   case 'DELETE_POST':
