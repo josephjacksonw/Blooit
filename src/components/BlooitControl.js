@@ -13,6 +13,7 @@ import PostDetail from './PostDetail';
 // edit functionality OK
 // upvote/downvote
 // sort list by votes
+// When Ted was not connected to the dev server, he was able to click on the Post title div and it was making votes go up?
 
 //main views:
 //  post list
