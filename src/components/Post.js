@@ -3,19 +3,6 @@ import PropTypes from "prop-types";
 
 
 function Post(props){
-
-  function handleUpvote(event){
-    event.preventDefault();
-    props.onUpvote({
-      title: props.title,
-      author: props.author,
-      text: props.text,
-      creationDate: props.creationDate,
-      upvotes: props.upvotes + 1,
-      downvotes: props.downvotes,
-      id: props.id
-    });
-  }
   
   return(
     <div className="post"> {/*TODO: why does it allow us to reach the function when we parseint? The method doesn't work, but it is reached, otherwise it isn't reached at all.*/}
@@ -29,17 +16,15 @@ function Post(props){
             <span className="vote--text">{props.upvotes}</span>
           </div>{/*upvotes*/}
           <div className="downvotes">
-            <button onClick={props.onUpvote}>
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-big-down downvotes--icon" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a905b6" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                 <path d="M15 4v8h3.586a1 1 0 0 1 .707 1.707l-6.586 6.586a1 1 0 0 1 -1.414 0l-6.586 -6.586a1 1 0 0 1 .707 -1.707h3.586v-8a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1z" />
               </svg>
-            </button>
             <span className="vote--text">{props.downvotes}</span>
             
           </div> {/*downvotes*/}
         </div>{/*votes*/}
-        <div className="post--title"  onClick={handleUpvote}>
+        <div className="post--title"  onClick={() => props.whenClicked(props.id)}>
           <h1>{props.title}</h1>
           <h3>{props.author} - {props.creationDate}</h3>
           
@@ -69,7 +54,6 @@ Post.propTypes = {
   downvotes: PropTypes.number,
   replies: PropTypes.array,
   id: PropTypes.string,
-  onUpvote: PropTypes.func
 }
 
 

@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 // import ReusablePost from './ReusablePost';
 import PropTypes from 'prop-types';
 import PostDetail from './PostDetail';
+import * as a from './../actions'
 
 //TODO:
 // edit functionality OK
@@ -39,20 +40,21 @@ class BlooitControl extends React.Component {
       });
     } else {
       const { dispatch } = this.props;
-      const action = {
-        type: 'TOGGLE_FORM'
-      }
+      // const action = {
+      //   type: 'TOGGLE_FORM'
+      // }
+      const action = a.toggleForm();
       dispatch(action);
     }
   }
 
-
   handleDeletingPost = (id) => {
     const { dispatch } = this.props;
-    const action = {
-      type: 'DELETE_POST',
-      id: id
-    }
+    // const action = {
+    //   type: 'DELETE_POST',
+    //   id: id
+    // }
+    const action = a.deletePost(id);
     dispatch(action);
     this.setState({selectedPost: null});
   }
@@ -61,6 +63,7 @@ class BlooitControl extends React.Component {
     this.setState({editing: true});
   }
 
+  //TODO - FIX THIS SHIT
   handleUpvote = (postToUpvote) => {
     const {dispatch} = this.props;
     const{id, title, author, text, upvotes, downvotes, creationDate} = postToUpvote;
@@ -70,7 +73,7 @@ class BlooitControl extends React.Component {
       title: title,
       author: author,
       text: text,
-      upvotes: parseInt(upvotes) + 1,
+      upvotes: upvotes,
       downvotes: downvotes,
       creationDate: creationDate,
     }
@@ -86,17 +89,18 @@ class BlooitControl extends React.Component {
   //laggin' hard
   handleEditingPost = (postToEdit) => {
     const { dispatch } = this.props;
-    const { id, title, author, text, upvotes, downvotes, creationDate } = postToEdit;
-    const action = {
-      type: 'ADD_POST',
-      id: id,
-      title: title,
-      author: author,
-      text: text,
-      upvotes: upvotes,
-      downvotes: downvotes,
-      creationDate: creationDate,
-    }
+    // const { id, title, author, text, upvotes, downvotes, creationDate } = postToEdit;
+    // const action = {
+    //   type: 'ADD_POST',
+    //   id: id,
+    //   title: title,
+    //   author: author,
+    //   text: text,
+    //   upvotes: upvotes,
+    //   downvotes: downvotes,
+    //   creationDate: creationDate,
+    // }
+    const action = a.addPost(postToEdit);
     dispatch(action);
     this.setState({
       editing: false,
@@ -106,21 +110,23 @@ class BlooitControl extends React.Component {
 
   handleAddingNewPost = (newPost) => {
     const { dispatch } = this.props;
-    const { id, title, author, text, upvotes, downvotes, creationDate } = newPost;
-    const action = {
-      type: 'ADD_POST',
-      id: id,
-      title: title,
-      author: author,
-      text: text,
-      upvotes: upvotes,
-      downvotes: downvotes,
-      creationDate: creationDate
-    }
+    // const { id, title, author, text, upvotes, downvotes, creationDate } = newPost;
+    // const action = {
+    //   type: 'ADD_POST',
+    //   id: id,
+    //   title: title,
+    //   author: author,
+    //   text: text,
+    //   upvotes: upvotes,
+    //   downvotes: downvotes,
+    //   creationDate: creationDate
+    // }
+    const action = a.addPost(newPost);
     dispatch(action);
-    const action2 = {
-      type: 'TOGGLE_FORM'
-    }
+    // const action2 = {
+    //   type: 'TOGGLE_FORM'
+    // }
+    const action2 = a.toggleForm();
     dispatch(action2);
   }
 
